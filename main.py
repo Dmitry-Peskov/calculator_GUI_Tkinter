@@ -34,31 +34,32 @@ def clear():
 
 def create_button_dijit(num: int):
     '''Создаёт кнопку'''
-    return tk.Button(text= str(num), font=('Arial',20), bd=2,command= lambda : add_dijit(num))
+    return tk.Button(text= str(num), bg= '#525151', font=('Arial',20), fg= 'white', bd=2,command= lambda : add_dijit(num))
 
 def create_button_operation(operation: str):
     '''Создаёт кнопки математических операций'''
-    return tk.Button(text= str(operation), font=('Impact',20), bd=2,command= lambda : add_operation(operation))
+    return tk.Button(text= str(operation), bg= '#525151', font=('Impact',25), fg= 'white', bd=2,command= lambda : add_operation(operation))
 
 def create_button_calc(operation: str):
     '''Создаёт кнопку равенства'''
-    return tk.Button(text= str(operation), font=('Impact',20), bd=2,command= calculate)
+    return tk.Button(text= str(operation), bg= '#525151', font=('Impact',25), fg= 'red', bd=2,command= calculate)
 
 def create_button_clear(operation: str):
     '''Создаёт кнопку равенства'''
-    return tk.Button(text= str(operation), font=('Impact',20), bd=2,command= clear)
+    return tk.Button(text= str(operation), bg= '#525151', font=('Impact',20), fg= 'red', bd=2,command= clear)
 
 #Настройки галвного окна
 win = tk.Tk()
 icon = tk.PhotoImage(file='icon.png')
 win.iconphoto(False, icon)
-win.geometry(f"400x500+700+250")
+win.geometry(f"360x400+700+250")
+win['bg'] = '#242424'
 win.title('Калькулятор (ПескOff production©)')
 win.resizable(False, False)
 
 #создаём поле ввода
-calc = tk.Entry(win, justify=tk.RIGHT, font=('Arial', 20))
-calc.grid(row=0, column=0, columnspan=4, sticky='we', padx= 10)
+calc = tk.Entry(win, justify=tk.RIGHT, font=('Arial', 22), bg= '#bfbbbb')
+calc.grid(row=0, column=0, columnspan=4, sticky='we', padx= 5)
 calc.insert(0,'0')
 
 #настраиваем сетку
@@ -72,26 +73,26 @@ win.grid_rowconfigure(3,minsize=90)
 win.grid_rowconfigure(4,minsize=90)
 
 #создаём кнопки с цифрами
-create_button_dijit('7').grid(row=1,column=0, sticky='wens', padx= 1, pady=1)
-create_button_dijit('8').grid(row=1,column=1, sticky='wens', padx= 1, pady=1)
-create_button_dijit('9').grid(row=1,column=2, sticky='wens', padx= 1, pady=1)
-create_button_dijit('4').grid(row=2,column=0, sticky='wens', padx= 1, pady=1)
-create_button_dijit('5').grid(row=2,column=1, sticky='wens', padx= 1, pady=1)
-create_button_dijit('6').grid(row=2,column=2, sticky='wens', padx= 1, pady=1)
-create_button_dijit('1').grid(row=3,column=0, sticky='wens', padx= 1, pady=1)
-create_button_dijit('2').grid(row=3,column=1, sticky='wens', padx= 1, pady=1)
-create_button_dijit('3').grid(row=3,column=2, sticky='wens', padx= 1, pady=1)
-create_button_dijit('0').grid(row=4,column=1, sticky='wens', padx= 1, pady=1)
+create_button_dijit('7').grid(row=1,column=0, sticky='wens', padx= 2, pady=2)
+create_button_dijit('8').grid(row=1,column=1, sticky='wens', padx= 2, pady=2)
+create_button_dijit('9').grid(row=1,column=2, sticky='wens', padx= 2, pady=2)
+create_button_dijit('4').grid(row=2,column=0, sticky='wens', padx= 2, pady=2)
+create_button_dijit('5').grid(row=2,column=1, sticky='wens', padx= 2, pady=2)
+create_button_dijit('6').grid(row=2,column=2, sticky='wens', padx= 2, pady=2)
+create_button_dijit('1').grid(row=3,column=0, sticky='wens', padx= 2, pady=2)
+create_button_dijit('2').grid(row=3,column=1, sticky='wens', padx= 2, pady=2)
+create_button_dijit('3').grid(row=3,column=2, sticky='wens', padx= 2, pady=2)
+create_button_dijit('0').grid(row=4,column=1, sticky='wens', padx= 2, pady=2)
 
 #создаём кнопки с математическими операциями
-create_button_operation('/').grid(row=1,column=3, sticky='wens', padx= 1, pady=1)
-create_button_operation('*').grid(row=2,column=3, sticky='wens', padx= 1, pady=1)
-create_button_operation('-').grid(row=3,column=3, sticky='wens', padx= 1, pady=1)
-create_button_operation('+').grid(row=4,column=3, sticky='wens', padx= 1, pady=1)
+create_button_operation('/').grid(row=1,column=3, sticky='wens', padx= 1, pady=2)
+create_button_operation('*').grid(row=2,column=3, sticky='wens', padx= 1, pady=2)
+create_button_operation('-').grid(row=3,column=3, sticky='wens', padx= 1, pady=2)
+create_button_operation('+').grid(row=4,column=3, sticky='wens', padx= 1, pady=2)
 
 #создаем кнопки вычисления и очистки
-create_button_calc('=').grid(row=4,column=2, sticky='wens', padx= 1, pady=1)
-create_button_clear('C').grid(row=4,column=0, sticky='wens', padx= 1, pady=1)
+create_button_calc('=').grid(row=4,column=2, sticky='wens', padx= 2, pady=2)
+create_button_clear('C').grid(row=4,column=0, sticky='wens', padx= 2, pady=2)
 
 if __name__ == "__main__":
     win.mainloop()
