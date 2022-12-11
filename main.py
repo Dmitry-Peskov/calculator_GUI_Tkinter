@@ -20,7 +20,7 @@ def add_operation(operation: str):
     calc.insert(0, value + operation)
 
 def calculate():
-    '''Производит вычеснение на основе выражения записанного в строке ввода'''
+    '''Производит вычисление на основе выражения, записанного в строке ввода'''
     value = calc.get()
     if value[-1] in '+-*/':
         value = value + value[:-1]
@@ -48,7 +48,7 @@ def create_button_clear(operation: str):
     '''Создаёт кнопку равенства'''
     return tk.Button(text= str(operation), bg= '#525151', font=('Impact',20), fg= 'red', bd=2,command= clear)
 
-#Настройки галвного окна
+#Настройки главного окна
 win = tk.Tk()
 icon = tk.PhotoImage(file='icon.png')
 win.iconphoto(False, icon)
@@ -57,12 +57,12 @@ win['bg'] = '#242424'
 win.title('Калькулятор (ПескOff production©)')
 win.resizable(False, False)
 
-#создаём поле ввода
+#создаём и настраиваем поле ввода
 calc = tk.Entry(win, justify=tk.RIGHT, font=('Arial', 22), bg= '#bfbbbb')
 calc.grid(row=0, column=0, columnspan=4, sticky='we', padx= 5)
 calc.insert(0,'0')
 
-#настраиваем сетку
+#настраиваем сетку (строки и столбцы)
 win.grid_columnconfigure(0,minsize=90)
 win.grid_columnconfigure(1,minsize=90)
 win.grid_columnconfigure(2,minsize=90)
